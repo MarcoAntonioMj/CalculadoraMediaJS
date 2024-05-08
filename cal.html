@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média</title>
+    <script>
+        // Função para calcular a média das notas
+        function calcularMedia(notas) {
+            var total = 0;
+            for (var i = 0; i < notas.length; i++) {
+                total += notas[i];
+            }
+            return total / notas.length;
+        }
+
+        // Função para ler as notas de um aluno e calcular a média
+        function calcularMediaDoAluno() {
+            var nomeDoAluno = document.getElementById("nome").value;
+            var notasDoAluno = [];
+            for (var i = 1; i <= 4; i++) {
+                var nota = parseFloat(document.getElementById("nota" + i).value);
+                notasDoAluno.push(nota);
+            }
+            var media = calcularMedia(notasDoAluno);
+            document.getElementById("resultado").innerHTML = "Nome do aluno: " + nomeDoAluno + "<br>" +
+                "Notas: " + notasDoAluno.join(", ") + "<br>" +
+                "Média: " + media.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Média</h1>
+    <form>
+        <label for="nome">Nome do aluno:</label>
+        <input type="text" id="nome" required><br><br>
+        
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" min="0" max="10" step="0.01" required><br><br>
+
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" min="0" max="10" step="0.01" required><br><br>
+
+        <label for="nota3">Nota 3:</label>
+        <input type="number" id="nota3" min="0" max="10" step="0.01" required><br><br>
+
+        <label for="nota4">Nota 4:</label>
+        <input type="number" id="nota4" min="0" max="10" step="0.01" required><br><br>
+
+        <button type="button" onclick="calcularMediaDoAluno()">Calcular Media</button>
+    </form>
+    <div id="resultado"></div>
+</body>
+</html>
